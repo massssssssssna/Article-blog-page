@@ -34,3 +34,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-09-30T18:10:40+05:00
 - Author: Massna Ijaz
 
+### [2026-09-30] Add base typography and reset rules to global styles
+- Timestamp: 2026-09-30T19:20:10+05:00
+- Author: Massna Ijaz
+
