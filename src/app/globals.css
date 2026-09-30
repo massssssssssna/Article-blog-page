@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
+:root {
+  /* Dark Gaming & Sakura Cyberpunk Theme */
+  --bg-primary: #080b12;
+  --bg-secondary: #0f1624;
+  --bg-card: rgba(16, 23, 37, 0.75);
+  --bg-card-hover: rgba(24, 34, 54, 0.88);
+  --bg-glass: rgba(10, 15, 25, 0.82);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(255, 252, 0, 0.35);
+  --border-pink: rgba(255, 117, 143, 0.35);
+
+  /* Signature Accents */
+  --snap-yellow: #FFFC00;
+  --snap-yellow-glow: rgba(255, 252, 0, 0.4);
+  --snap-yellow-dark: #E6DC00;
+  --sakura-pink: #FF758F;
+  --sakura-glow: rgba(255, 117, 143, 0.35);
+  --electric-purple: #A855F7;
+  --cyber-blue: #00F2FE;
+  --emerald-green: #10B981;
+  --ruby-red: #EF4444;
+
+  /* Text Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Typography */
+  --font-headline: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --glow-yellow: 0 0 28px rgba(255, 252, 0, 0.3);
+  --glow-sakura: 0 0 32px rgba(255, 117, 143, 0.3);
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-full: 9999px;
+  --container-max: 1200px;
+}
+
