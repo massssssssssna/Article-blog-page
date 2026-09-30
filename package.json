@@ -1,0 +1,8 @@
+{
+  "name": "urooj-fatima-snapchat-gaming-legend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev"
+  }
+}
