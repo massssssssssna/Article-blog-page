@@ -1,14 +1,35 @@
 export const articleData = {
   meta: {
-    title: "Urooj Fatima: The Snapchat Gaming Legend & The Streak Odyssey",
-    edition: "Special Issue #77",
-    date: "October 7, 2026",
+    title: "The Rise of Urooj Fatima: The Snapchat Gaming Legend",
+    badge: "EXCLUSIVE COVER STORY • MOBILE ESPORTS PROFILE",
+    subtitle: "How an iconic winking Bitmoji avatar, laser-sharp reflexes, and an unbroken 365-day streak turned a casual chat platform into a global gaming battleground.",
+    author: {
+      name: "Zainab Malik",
+      role: "Senior Esports & Culture Editor",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+    },
+    publishedDate: "October 7, 2026",
     readTime: "7 min read",
-    author: "Zayn al-Hakim",
-    verifiedTitle: "Certified Snapchat Streak Monarch & Reflex Champion"
-  }
-  
-  
+    projectHubId: "11853502281280626731",
+    screenId: "31bd138ce5994188896c10ca79f53ec4",
+    screenTitle: "Urooj Fatima - The Snapchat Gaming Legend"
+  },
+  stats: [
+    { label: "Global Rank", value: "#1", subtext: "Snapchat Gaming Leaderboards", icon: "Trophy" },
+    { label: "Active Streak", value: "365+", subtext: "Unbroken Daily Play Streak", icon: "Flame" },
+    { label: "Avg. Win Rate", value: "98.4%", subtext: "Across 1,200+ Competitive Matches", icon: "Target" },
+    { label: "Reflex Speed", value: "218 ms", subtext: "Certified Snap Arena Benchmark", icon: "Zap" },
+    { label: "Squad Followers", value: "145K+", subtext: "Active Bitmoji Gaming Community", icon: "Users" }
+  ],
+  playerProfile: {
+    name: "Urooj Fatima",
+    tagline: "The Unbeaten Queen of Bitmoji Arenas",
+    avatarImage: "/urooj-fatima.jpg",
+    status: "ONLINE • IN THE SAKURA ZONE",
+    role: "Strategic Tactician & High-Reflex Speedrunner",
+    favoriteGames: ["Color Galaxy", "Bitmoji Party", "Snake Squad", "Tiny Royale"],
+    signatureQuote: "Casual games aren't low stakes—they are pure psychological chess at 60 frames per second."
+  },
   trophies: [
     {
       id: "trophy-1",
@@ -153,5 +174,4 @@ As our conversation concludes, Urooj glances at her phone. A new challenger squa
       context: "Analysis in Esports Digest"
     }
   ]
-};
 };
