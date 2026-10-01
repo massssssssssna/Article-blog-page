@@ -74,3 +74,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-10-01T18:35:15+05:00
 - Author: Massna Ijaz
 
+### [2026-10-01] Add witness quotes and community affidavits to article data
+- Timestamp: 2026-10-01T19:45:50+05:00
+- Author: Massna Ijaz
+
