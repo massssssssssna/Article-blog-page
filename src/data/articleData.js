@@ -8,4 +8,5 @@ export const articleData = {
     verifiedTitle: "Certified Snapchat Streak Monarch & Reflex Champion"
   }
   
+  
 };
