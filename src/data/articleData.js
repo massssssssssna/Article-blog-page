@@ -7,4 +7,5 @@ export const articleData = {
     author: "Zayn al-Hakim",
     verifiedTitle: "Certified Snapchat Streak Monarch & Reflex Champion"
   }
+  
 };
