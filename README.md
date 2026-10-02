@@ -15,3 +15,7 @@ npm install
 npm run dev
 ```
 Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Features Overview
+- **Dynamic Header**: Real-time reading scroll progress bar, audio synthesizer mute toggle, quick share modal launcher.
+- **Audio Synthesis**: Pure Web Audio API synthesized frequencies for clicks, pops, laser blasts, streak combos, and trophy fanfare.
