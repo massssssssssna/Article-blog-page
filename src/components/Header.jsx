@@ -1,34 +1,73 @@
 'use client';
-import React, { useState } from 'react';
-import { Sparkles, Volume2, VolumeX } from 'lucide-react';
-import { toggleSound, isSoundEnabled, playPop } from '../utils/soundFx';
 
-export default function Header({ onShareClick }) {
-  const [soundOn, setSoundOn] = useState(true);
+import React, { useState, useEffect } from 'react';
+import { Volume2, VolumeX, Moon, Sun, Type, Share2, Sparkles } from 'lucide-react';
+import { soundFX } from '../utils/soundFx';
 
-  const handleSoundToggle = () => {
-    const nextState = toggleSound();
-    setSoundOn(nextState);
-    if (nextState) playPop();
+export default function Header({ onShareClick, onFontSizeToggle, isLargeFont }) {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDark, setIsDark] = useState(true);
+  const [isAudioActive, setIsAudioActive] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleTheme = () => {
+    soundFX.playPop();
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme ? 'dark' : 'light');
+  };
+
+  const toggleAudio = () => {
+    const nextState = !isAudioActive;
+    setIsAudioActive(nextState);
+    soundFX.toggleAmbient(nextState);
+    if (nextState) {
+      soundFX.playPop();
+    }
   };
 
   return (
-    <header className="site-header">
+    <>
       <div className="reading-progress-track">
-        <div className="reading-progress-fill" style={{ width: '0%' }}></div>
+        <div 
+          className="reading-progress-bar" 
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
-      <div className="header-inner">
-        <div className="brand-group">
-          <Sparkles className="brand-icon" size={20} />
-          <span className="brand-title">The Fatima Gazette</span>
-          <span className="edition-badge">Issue #77</span>
-        </div>
-        <div className="actions">
-          <button className="sound-toggle-btn" onClick={handleSoundToggle}>
-            {soundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
-          </button>
-        </div>
-      </div>
-    </header>
-  );
+
+      <header className="site-header" id="site-header">
+        <div className="header-inner">
+          <a href="#top" className="brand-badge" onClick={() => soundFX.playPop()}>
+            <span className="snap-icon-pill">
+              <Sparkles size={14} />
+              SNAP GAMING
+            </span>
+            <span className="brand-title">Urooj Fatima: The Legend</span>
+          </a>
+
+          <div className="header-controls">
+            <button 
+              id="audio-toggle-btn"
+              onClick={toggleAudio} 
+              className={`control-btn ${isAudioActive ? 'active' : ''}`}
+              title={isAudioActive ? "Mute Ambient Vibe" : "Play Ambient Vibe"}
+            >
+              {isAudioActive ? <Volume2 size={16} /> : <VolumeX size={16} />}
+              <span>{isAudioActive ? 'Audio ON' : 'Ambiance'}</span>
+            </button>
+
+            <button 
+              id="font-size-bt
 }
