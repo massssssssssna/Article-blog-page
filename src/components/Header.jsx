@@ -1,8 +1,17 @@
 'use client';
 import React, { useState } from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Volume2, VolumeX } from 'lucide-react';
+import { toggleSound, isSoundEnabled, playPop } from '../utils/soundFx';
 
-export default function Header() {
+export default function Header({ onShareClick }) {
+  const [soundOn, setSoundOn] = useState(true);
+
+  const handleSoundToggle = () => {
+    const nextState = toggleSound();
+    setSoundOn(nextState);
+    if (nextState) playPop();
+  };
+
   return (
     <header className="site-header">
       <div className="header-inner">
@@ -10,6 +19,11 @@ export default function Header() {
           <Sparkles className="brand-icon" size={20} />
           <span className="brand-title">The Fatima Gazette</span>
           <span className="edition-badge">Issue #77</span>
+        </div>
+        <div className="actions">
+          <button className="sound-toggle-btn" onClick={handleSoundToggle}>
+            {soundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
+          </button>
         </div>
       </div>
     </header>
