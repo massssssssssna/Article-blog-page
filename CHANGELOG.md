@@ -110,3 +110,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-10-02T17:10:00+05:00
 - Author: Massna Ijaz
 
+### [2026-10-02] Fine-tune header scroll transitions and backdrop blur
+- Timestamp: 2026-10-02T18:25:30+05:00
+- Author: Massna Ijaz
+
