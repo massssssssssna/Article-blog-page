@@ -69,5 +69,23 @@ export default function Header({ onShareClick, onFontSizeToggle, isLargeFont }) 
             </button>
 
             <button 
-              id="font-size-bt
+              id="font-size-btn"
+              onClick={() => {
+                soundFX.playPop();
+                onFontSizeToggle();
+              }}
+              className={`control-btn ${isLargeFont ? 'active' : ''}`}
+              title="Toggle Reading Font Size"
+            >
+              <Type size={16} />
+              <span>{isLargeFont ? 'A-' : 'A+'}</span>
+            </button>
+
+            <button 
+              id="theme-toggle-btn"
+              onClick={toggleTheme} 
+              className="control-btn"
+              title="Toggle Theme"
+            >
+              {isDark ? <Sun size={16} /> : <Moon size
 }
