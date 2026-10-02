@@ -94,3 +94,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-10-02T12:00:30+05:00
 - Author: Massna Ijaz
 
+### [2026-10-02] Add reading progress indicator bar to Header
+- Timestamp: 2026-10-02T13:20:40+05:00
+- Author: Massna Ijaz
+

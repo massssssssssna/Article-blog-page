@@ -14,6 +14,9 @@ export default function Header({ onShareClick }) {
 
   return (
     <header className="site-header">
+      <div className="reading-progress-track">
+        <div className="reading-progress-fill" style={{ width: '0%' }}></div>
+      </div>
       <div className="header-inner">
         <div className="brand-group">
           <Sparkles className="brand-icon" size={20} />
