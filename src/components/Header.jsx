@@ -87,5 +87,24 @@ export default function Header({ onShareClick, onFontSizeToggle, isLargeFont }) 
               className="control-btn"
               title="Toggle Theme"
             >
-              {isDark ? <Sun size={16} /> : <Moon size
+              {isDark ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+
+            <button 
+              id="share-btn"
+              onClick={() => {
+                soundFX.playPop();
+                onShareClick();
+              }} 
+              className="control-btn active"
+              title="Share Article"
+            >
+              <Share2 size={16} />
+              <span>Share</span>
+            </button>
+          </div>
+        </div>
+      </header>
+    </>
+  );
 }
