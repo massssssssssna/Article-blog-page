@@ -91,5 +91,20 @@ export default function HeroSection({ meta, playerProfile }) {
           </div>
 
           <div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontFamily: 'var(--font-mono)' }}>
+              CORE ARENA DISCIPLINES:
+            </div>
+            <div className="fav-games-row">
+              {playerProfile.favoriteGames.map((game, i) => (
+                <span key={i} className="game-chip">
+                  <Flame size={13} color="var(--snap-yellow)" />
+                  {game}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
