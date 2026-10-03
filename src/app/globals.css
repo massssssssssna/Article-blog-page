@@ -149,3 +149,22 @@ body {
   background: linear-gradient(135deg, var(--snap-yellow), var(--sakura-pink), var(--electric-purple));
   box-shadow: 0 0 35px rgba(255, 252, 0, 0.35);
 }
+
+/* Quick Stats Bar */
+.stats-bar-wrapper {
+  max-width: var(--container-max);
+  margin: 0 auto 3.5rem;
+  padding: 0 1.5rem;
+}
+.stat-card {
+  background: rgba(20, 20, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--snap-yellow);
+}
