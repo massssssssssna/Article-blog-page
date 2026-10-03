@@ -141,3 +141,11 @@ body {
   flex-direction: column;
   gap: 2rem;
 }
+
+.hero-portrait-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  background: linear-gradient(135deg, var(--snap-yellow), var(--sakura-pink), var(--electric-purple));
+  box-shadow: 0 0 35px rgba(255, 252, 0, 0.35);
+}
