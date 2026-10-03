@@ -74,5 +74,22 @@ export default function HeroSection({ meta, playerProfile }) {
 
         <div className="spotlight-content">
           <div className="player-title-badge">
-            <Za
+            <Zap size={14} />
+            {playerProfile.role}
+          </div>
+
+          <h2 className="player-name-heading">
+            {playerProfile.name}
+          </h2>
+
+          <p className="player-bio-text">
+            Recognized across global leaderboards as the undisputed architect of competitive Bitmoji mini-games. With a signature Sakura-park serenity and an unmistakable winking glance, she has redefined what casual mobile platforms are capable of.
+          </p>
+
+          <div className="signature-quote-box">
+            &ldquo;{playerProfile.signatureQuote}&rdquo;
+          </div>
+
+          <div>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0
 }

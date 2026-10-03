@@ -127,3 +127,17 @@ body {
   box-shadow: 0 0 10px var(--snap-yellow);
   transition: width 0.1s linear;
 }
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  padding: 4rem 1.5rem 3rem;
+  overflow: hidden;
+}
+.hero-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
