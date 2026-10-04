@@ -168,3 +168,14 @@ body {
   transform: translateY(-4px);
   border-color: var(--snap-yellow);
 }
+
+/* Arcade Reflex Mini Game */
+.arcade-cabinet {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top, #1c1538 0%, #0d091e 100%);
+  border: 2px solid rgba(255, 252, 0, 0.4);
+  box-shadow: 0 0 45px rgba(168, 85, 247, 0.35);
+  padding: 2rem;
+  overflow: hidden;
+}
