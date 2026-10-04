@@ -182,3 +182,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-10-04T14:45:15+05:00
 - Author: Massna Ijaz
 
+### [2026-10-04] Add difficulty tiers and high-score localStorage caching
+- Timestamp: 2026-10-04T16:00:30+05:00
+- Author: Massna Ijaz
+

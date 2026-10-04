@@ -137,5 +137,33 @@ export default function ReflexMiniGame() {
             id="reflex-active-target"
             className="target-orb"
             style={{ top: targetPos.top, left: targetPos.left }}
-            onClick
+            onClick={handleTargetClick}
+          >
+            🎯
+          </div>
+        )}
+
+        {gameState === 'result' && (
+          <div style={{ textAlign: 'center', zIndex: 10 }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '2.5rem', fontWeight: 900, color: reactionTime <= 220 ? 'var(--snap-yellow)' : 'var(--text-primary)' }}>
+              {reactionTime} ms
+            </div>
+            <div style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginTop: '0.4rem', fontWeight: 600 }}>
+              {ratingMessage}
+            </div>
+            <button 
+              id="retry-reflex-btn"
+              className="control-btn"
+              style={{ marginTop: '1.25rem', borderColor: 'var(--border-accent)' }}
+              onClick={startGame}
+            >
+              <RotateCcw size={15} />
+              Try Again
+            </button>
+          </div>
+        )}
+      </div>
+
+      {ratingMessage && gameState === 'idle' && (
+        <div style={{ textAlig
 }
