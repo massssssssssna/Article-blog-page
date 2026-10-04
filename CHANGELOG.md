@@ -170,3 +170,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-10-04T10:50:20+05:00
 - Author: Massna Ijaz
 
+### [2026-10-04] Add combo multiplier and score calculation
+- Timestamp: 2026-10-04T12:10:00+05:00
+- Author: Massna Ijaz
+
