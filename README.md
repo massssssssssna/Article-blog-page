@@ -19,3 +19,8 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 ## Features Overview
 - **Dynamic Header**: Real-time reading scroll progress bar, audio synthesizer mute toggle, quick share modal launcher.
 - **Audio Synthesis**: Pure Web Audio API synthesized frequencies for clicks, pops, laser blasts, streak combos, and trophy fanfare.
+
+### Snap Reflex Mini-Game
+- **30-Second Rush**: Rapid target clicking with dynamic combo multiplier.
+- **Ranks**: Novice Snapster, Streak Keeper, Laser Tap God, and Legendary Monarch (triggers confetti).
+- **Audio Feedback**: Frequencies accelerate as streak combos rise.
