@@ -165,5 +165,29 @@ export default function ReflexMiniGame() {
       </div>
 
       {ratingMessage && gameState === 'idle' && (
-        <div style={{ textAlig
+        <div style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--sakura-pink)', fontSize: '0.9rem', fontWeight: 600 }}>
+          {ratingMessage}
+        </div>
+      )}
+
+      <div className="game-score-display">
+        <div className="score-box">
+          <div className="score-num" style={{ color: 'var(--snap-yellow)' }}>218 ms</div>
+          <div className="score-lbl">Urooj Fatima&apos;s Record</div>
+        </div>
+        <div className="score-box">
+          <div className="score-num">
+            {reactionTime ? `${reactionTime} ms` : '--'}
+          </div>
+          <div className="score-lbl">Your Latest Attempt</div>
+        </div>
+        <div className="score-box">
+          <div className="score-num" style={{ color: 'var(--sakura-pink)' }}>
+            {bestScore ? `${bestScore} ms` : '--'}
+          </div>
+          <div className="score-lbl">Your Personal Best</div>
+        </div>
+      </div>
+    </div>
+  );
 }
