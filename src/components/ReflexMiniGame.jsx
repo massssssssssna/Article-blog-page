@@ -97,5 +97,45 @@ export default function ReflexMiniGame() {
       <div className="reflex-header">
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--sakura-pink)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.4rem' }}>
           <Zap size={14} />
-          INTERACTIV
+          INTERACTIVE ARENA CHALLENGE
+        </div>
+        <h3 className="reflex-title">Beat Urooj&apos;s 218ms Reflex Benchmark</h3>
+        <p className="reflex-desc">
+          Test your touchscreen reaction speed against Urooj Fatima&apos;s certified tournament benchmark. Click the target the millisecond it flashes!
+        </p>
+      </div>
+
+      <div 
+        className="reflex-target-arena"
+        onClick={handleEarlyClick}
+      >
+        {gameState === 'idle' && (
+          <button 
+            id="start-reflex-btn"
+            className="control-btn active"
+            style={{ fontSize: '1rem', padding: '0.8rem 1.8rem' }}
+            onClick={startGame}
+          >
+            <Play size={18} />
+            Start Reflex Challenge
+          </button>
+        )}
+
+        {gameState === 'waiting' && (
+          <div style={{ textAlign: 'center', color: 'var(--snap-yellow)', fontFamily: 'var(--font-mono)' }}>
+            <div style={{ fontSize: '1.2rem', fontWeight: 800, animation: 'pulseTarget 0.5s infinite alternate' }}>
+              WAIT FOR THE TARGET...
+            </div>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.4rem' }}>
+              (Do not click until it snaps onto the arena!)
+            </div>
+          </div>
+        )}
+
+        {gameState === 'ready' && (
+          <div 
+            id="reflex-active-target"
+            className="target-orb"
+            style={{ top: targetPos.top, left: targetPos.left }}
+            onClick
 }
