@@ -1,23 +1,40 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+
+import React, { useEffect, useState } from 'react';
 
 export default function SakuraParticles() {
-  const canvasRef = useRef(null);
+  const [petals, setPetals] = useState([]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let animId;
-    
-    const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      animId = requestAnimationFrame(render);
-    };
-    render();
-
-    return () => cancelAnimationFrame(animId);
+    // Generate 24 floating cherry blossom petals
+    const generated = Array.from({ length: 24 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 98}%`,
+      width: `${Math.random() * 12 + 10}px`,
+      height: `${Math.random() * 9 + 8}px`,
+      animationDuration: `${Math.random() * 7 + 8}s`,
+      animationDelay: `${Math.random() * 6}s`,
+      opacity: Math.random() * 0.45 + 0.35
+    }));
+    setPetals(generated);
   }, []);
 
-  return <canvas ref={canvasRef} className="sakura-canvas" />;
+  return (
+    <div className="sakura-container" aria-hidden="true">
+      {petals.map((p) => (
+        <div
+          key={p.id}
+          className="sakura-petal"
+          style={{
+            left: p.left,
+            width: p.width,
+            height: p.height,
+            animationDuration: p.animationDuration,
+            animationDelay: p.animationDelay,
+            opacity: p.opacity
+          }}
+        />
+      ))}
+    </div>
+  );
 }
