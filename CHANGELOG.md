@@ -218,3 +218,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-10-05T13:10:25+05:00
 - Author: Massna Ijaz
 
+### [2026-10-05] Define unlockable achievements and badge data
+- Timestamp: 2026-10-05T14:25:40+05:00
+- Author: Massna Ijaz
+
