@@ -62,5 +62,29 @@ export default function ReactionEngine() {
   };
 
   return (
-    <div class
+    <div className="reactions-panel" id="reactions">
+      <h4 className="reactions-title">What did you think of the Legend&apos;s story?</h4>
+      <p className="reactions-sub">
+        Leave your instant reaction to celebrate Urooj Fatima&apos;s achievements!
+      </p>
+
+      <div className="reactions-btn-row">
+        {reactions.map((item) => {
+          const hasVoted = !!userClicked[item.id];
+          return (
+            <button
+              key={item.id}
+              className={`reaction-btn ${hasVoted ? 'active' : ''}`}
+              onClick={() => handleReact(item.id)}
+              title={`React with ${item.label}`}
+            >
+              <span>{item.emoji}</span>
+              <span>{item.label}</span>
+              <span className="reaction-count">{item.count}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
