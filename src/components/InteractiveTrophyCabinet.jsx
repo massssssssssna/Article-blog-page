@@ -53,5 +53,32 @@ export default function InteractiveTrophyCabinet({ trophies }) {
               className="trophy-item"
               style={{
                 borderColor: isSelected ? 'var(--snap-yellow)' : 'var(--border-subtle)',
-                background: isSelected ? 'rgba(255, 252, 0, 0.
+                background: isSelected ? 'rgba(255, 252, 0, 0.08)' : 'var(--bg-card)',
+                boxShadow: isSelected ? '0 0 25px var(--snap-yellow-glow)' : 'none'
+              }}
+              onClick={() => handleTrophyClick(trophy)}
+            >
+              <span className="trophy-tier-pill">{trophy.tier}</span>
+
+              <div className="trophy-icon-wrapper">
+                <IconComp size={24} />
+              </div>
+
+              <h4 className="trophy-title">{trophy.title}</h4>
+              <p className="trophy-desc">{trophy.description}</p>
+
+              <div style={{ marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                <span>Earned: {trophy.dateEarned}</span>
+                {isSelected && (
+                  <span style={{ color: 'var(--snap-yellow)', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+                    <CheckCircle size={12} /> Inspected
+                  </span>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
