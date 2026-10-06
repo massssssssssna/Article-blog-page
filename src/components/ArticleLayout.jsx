@@ -85,5 +85,48 @@ export default function ArticleLayout({ chapters, pullQuotes, gameplayRecords, t
                 CHAPTER {chapter.number}
               </span>
               <h2 className="chapter-title">
-                {chapt
+                {chapter.title}
+              </h2>
+            </div>
+
+            <div 
+              className="chapter-prose"
+              style={{ fontSize: isLargeFont ? '1.25rem' : '1.08rem' }}
+            >
+              {chapter.content.split('\n\n').map((paragraph, pIdx) => (
+                <p key={pIdx}>{paragraph}</p>
+              ))}
+            </div>
+
+            {/* Intersperse Pull Quotes */}
+            {index === 1 && (
+              <div className="editorial-pullquote">
+                <p className="pullquote-text">
+                  &ldquo;{pullQuotes[0].quote}&rdquo;
+                </p>
+                <div className="pullquote-cite">
+                  — {pullQuotes[0].author} ({pullQuotes[0].context})
+                </div>
+              </div>
+            )}
+
+            {/* Intersperse Gameplay Records Grid in Chapter 3 */}
+            {index === 2 && (
+              <div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 800, margin: '2rem 0 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Swords size={20} color="var(--snap-yellow)" />
+                  Championship Arena Telemetry
+                </h3>
+                <div className="records-grid">
+                  {gameplayRecords.map((rec, rIdx) => (
+                    <div 
+                      key={rIdx} 
+                      className="record-card"
+                      onMouseEnter={() => soundFX.playPop()}
+                    >
+                      <div className="record-game-name">{rec.game}</div>
+                      <div className="record-stat-highlight">{rec.record}</div>
+                      <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                        {rec.playstyle}
+              
 }
