@@ -128,5 +128,43 @@ export default function ArticleLayout({ chapters, pullQuotes, gameplayRecords, t
                       <div className="record-stat-highlight">{rec.record}</div>
                       <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                         {rec.playstyle}
-              
+                      </div>
+                      <div className="record-badge-row">
+                        <span>{rec.category}</span>
+                        <span style={{ color: 'var(--emerald-green)', fontWeight: 700 }}>
+                          🔥 {rec.winStreak}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Embed the interactive reflex mini-game right in Chapter 3! */}
+                <ReflexMiniGame />
+              </div>
+            )}
+
+            {/* Intersperse Trophy Cabinet in Chapter 4 */}
+            {index === 3 && (
+              <InteractiveTrophyCabinet trophies={trophies} />
+            )}
+
+            {index === 4 && (
+              <div className="editorial-pullquote">
+                <p className="pullquote-text">
+                  &ldquo;{pullQuotes[1].quote}&rdquo;
+                </p>
+                <div className="pullquote-cite">
+                  — {pullQuotes[1].author} ({pullQuotes[1].context})
+                </div>
+              </div>
+            )}
+          </section>
+        ))}
+
+        {/* Reaction Engine at the bottom of the article */}
+        <ReactionEngine />
+      </article>
+    </div>
+  );
 }
