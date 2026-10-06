@@ -88,5 +88,46 @@ export default function SocialShareModal({ isOpen, onClose, showToast }) {
           <button
             onClick={shareTwitter}
             className="control-btn"
-            style={{ flex: 1, justifyConten
+            style={{ flex: 1, justifyContent: 'center', padding: '0.7rem' }}
+          >
+            <Send size={15} />
+            Twitter / X
+          </button>
+          <button
+            onClick={shareWhatsApp}
+            className="control-btn"
+            style={{ flex: 1, justifyContent: 'center', padding: '0.7rem' }}
+          >
+            <MessageCircle size={15} />
+            WhatsApp
+          </button>
+        </div>
+
+        <div style={{ display: 'flex', gap: '0.5rem', background: 'rgba(0, 0, 0, 0.3)', padding: '0.5rem 0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
+          <input 
+            type="text" 
+            readOnly 
+            value={currentUrl} 
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'var(--text-muted)',
+              fontSize: '0.85rem',
+              width: '100%',
+              outline: 'none',
+              fontFamily: 'var(--font-mono)'
+            }}
+          />
+          <button
+            onClick={handleCopy}
+            className="control-btn active"
+            style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem' }}
+          >
+            {copied ? <Check size={14} /> : <Copy size={14} />}
+            {copied ? 'Copied' : 'Copy'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
