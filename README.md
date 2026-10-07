@@ -18,9 +18,10 @@ A luxury cyberpunk editorial chronicle dedicated to the gaming legend of Snapcha
 - **🌸 Sakura Canvas Physics**: Floating cherry blossom particle simulation with wind drift and gentle sway.
 - **🏆 The Streak Vault (3D Trophy Cabinet)**: Interactive achievement cabinet showcasing mythical streak badges and verified community honors.
 - **📊 Streak Analytics Visualization**: Integrated data chart tracking peak streak hours, flame velocity, and reaction milestones.
+- **🔥 Dynamic Real-Time Streak Engine**: Live auto-incrementing streak system anchored at 295 streak and 204,499 snap score, advancing by +1 streak and +400 score daily after 5:00 AM local time.
 - **⚡ Real-Time Reaction Engine**: Floating emoji particle burst with persistent interactive counters.
 - **📜 Witness Affidavits**: Signed and sealed community testimonies celebrating the Streak Monarch.
-- **📱 Responsive Editorial Layout**: Frosted glassmorphism header, reading progress bar, social share modal with direct clipboard integration.
+- **🎨 Glassmorphic Desktop Experience**: Frosted glassmorphism header, reading progress bar, social share modal with direct clipboard integration.
 
 ---
 
