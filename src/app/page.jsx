@@ -372,7 +372,7 @@ export default function FatimaChroniclesPage() {
                   <div className="dossier-title-text">Player Classified Dossier</div>
                 </div>
                 <div className="dossier-id-code">
-                  ID: SNAP-FATIMA-04
+                  ID: itx haya
                 </div>
               </div>
 
