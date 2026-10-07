@@ -96,3 +96,17 @@ export function getLiveStreakAndScore(customDate = null) {
     daysElapsed: daysDiff
   };
 }
+
+/**
+ * Calculates the exact next 5:00 AM rollover timestamp.
+ */
+export function getNextRolloverTimestamp(currentDate = new Date()) {
+  const d = new Date(currentDate);
+  const nextReset = new Date(d);
+  if (d.getHours() >= RESET_HOUR) {
+    nextReset.setDate(d.getDate() + 1);
+  }
+  nextReset.setHours(RESET_HOUR, 0, 0, 0);
+  return nextReset.getTime();
+}
+
