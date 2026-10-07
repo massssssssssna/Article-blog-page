@@ -363,7 +363,7 @@ body {
 }
 
 [id] {
-  scroll-margin-top: 85px;
+  scroll-margin-top: 110px;
 }
 
 /* Main Wrapper */
@@ -372,7 +372,7 @@ body {
   z-index: 2;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 6.5rem 1.5rem 5rem;
+  padding: 7.25rem 1.5rem 5rem;
 }
 
 /* Announcement Strip */

@@ -33,7 +33,7 @@ import {
 } from 'lucide-react';
 
 const NAV_TABS = [
-  { id: 'breaking', label: 'Breaking News', href: '#breaking' },
+  { id: 'breaking', label: 'Breaking News', href: '#top' },
   { id: 'dossier', label: 'Snap Legends', href: '#dossier' },
   { id: 'hall-of-fame', label: 'Hall of Fame', href: '#hall-of-fame' },
   { id: 'fashion-fits', label: 'Fashion & Fits', href: '#fashion-fits' },
