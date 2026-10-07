@@ -49,9 +49,10 @@ export default function Footer({ meta }) {
             <div>
               &copy; 2026 Antigravity Editorial • Next.js Interactive Publication. All rights reserved.
             </div>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
               <span>Engineered with Next.js &amp; Vanilla CSS</span>
               <span>Reflex Engine v2.4</span>
+              <span style={{ color: 'var(--snap-yellow)' }}>Active Streak: 295+</span>
             </div>
           </div>
         </div>
