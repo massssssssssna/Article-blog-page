@@ -429,9 +429,9 @@ export default function FatimaChroniclesPage() {
                   rel="noopener noreferrer"
                   onClick={() => soundFX.playPop()}
                 >
-                  <Ghost size={18} />
+                  <span style={{ fontSize: '1.65rem', lineHeight: 1, display: 'inline-flex', alignItems: 'center', filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15))' }}>👻</span>
                   <span>Add Urooj on Snapchat</span>
-                  <ArrowRight size={18} />
+                  <ArrowRight size={20} strokeWidth={2.5} />
                 </a>
                 <span className="dossier-disclaimer">
                   <AlertTriangle size={14} style={{ display: 'inline', verticalAlign: '-2px', marginRight: '4px' }} />
@@ -776,7 +776,7 @@ export default function FatimaChroniclesPage() {
                   rel="noopener noreferrer"
                   onClick={() => soundFX.playPop()}
                 >
-                  <Ghost size={18} />
+                  <span style={{ fontSize: '1.25rem', lineHeight: 1, display: 'inline-flex', alignItems: 'center' }}>👻</span>
                   <span>Add The Legend</span>
                 </a>
               </div>
