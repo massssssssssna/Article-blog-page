@@ -314,3 +314,7 @@ Progressive milestones for Urooj Fatima Article Project.
 - Timestamp: 2026-10-07T18:00:25+05:00
 - Author: Massna Ijaz
 
+### [2026-10-07] Wire global state, sound settings, and modal controls
+- Timestamp: 2026-10-07T19:15:40+05:00
+- Author: Massna Ijaz
+
