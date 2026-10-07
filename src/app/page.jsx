@@ -4,6 +4,33 @@ import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import SakuraParticles from '../components/SakuraParticles';
 import { soundFX } from '../utils/soundFx';
+import { getLiveStreakAndScore } from '../utils/streakCalculator';
+import {
+  Flame,
+  Ghost,
+  Crown,
+  Music,
+  Volume2,
+  VolumeX,
+  ClipboardCheck,
+  Send,
+  Heart,
+  Zap,
+  AlertCircle,
+  Coffee,
+  Landmark,
+  ScrollText,
+  Sparkles,
+  Lightbulb,
+  Gamepad2,
+  Activity,
+  PartyPopper,
+  Crosshair,
+  AlertTriangle,
+  ArrowRight,
+  ShieldCheck,
+  Clock
+} from 'lucide-react';
 
 const NAV_TABS = [
   { id: 'breaking', label: 'Breaking News', href: '#breaking' },
@@ -21,8 +48,16 @@ export default function FatimaChroniclesPage() {
   const [isAudioActive, setIsAudioActive] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [liveStats, setLiveStats] = useState(() => getLiveStreakAndScore());
 
   useEffect(() => {
+    // Dynamic real-time streak and snap score calculation
+    setLiveStats(getLiveStreakAndScore());
+
+    const timer = setInterval(() => {
+      setLiveStats(getLiveStreakAndScore());
+    }, 60000);
+
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (totalHeight > 0) {
@@ -49,7 +84,10 @@ export default function FatimaChroniclesPage() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(timer);
+    };
   }, []);
 
   const triggerToast = (msg) => {
@@ -89,7 +127,7 @@ export default function FatimaChroniclesPage() {
     soundFX.toggleAmbient(next);
     if (next) {
       soundFX.playPop();
-      triggerToast('Chill gaming ambiance turned ON 🎵');
+      triggerToast('Chill gaming ambiance turned ON');
     } else {
       triggerToast('Ambiance turned OFF');
     }
@@ -100,7 +138,7 @@ export default function FatimaChroniclesPage() {
     const url = typeof window !== 'undefined' ? window.location.href : 'https://snapchat.com/add/itxhaya.04';
     if (navigator?.clipboard) {
       navigator.clipboard.writeText(url);
-      triggerToast('Article link copied to clipboard! 📋');
+      triggerToast('Article link copied to clipboard!');
     }
   };
 
@@ -126,10 +164,10 @@ export default function FatimaChroniclesPage() {
 
       {/* Header */}
       <header className="site-header">
-        <div className="header-inner">
+        <div className="header-inner-container">
           <a href="#top" className="header-brand" onClick={() => soundFX.playPop()}>
             <div className="brand-icon-crown">
-              <span>👑</span>
+              <Crown size={18} style={{ color: 'var(--snap-yellow)' }} />
             </div>
             <div className="brand-text-col">
               <span className="brand-title-main">The Fatima Chronicles</span>
@@ -160,7 +198,17 @@ export default function FatimaChroniclesPage() {
               title="Toggle Ambiance"
               type="button"
             >
-              <span>{isAudioActive ? '🎵 Music' : '🔈 Ambiance'}</span>
+              {isAudioActive ? (
+                <>
+                  <Music size={14} />
+                  <span>Music</span>
+                </>
+              ) : (
+                <>
+                  <VolumeX size={14} />
+                  <span>Mute</span>
+                </>
+              )}
             </button>
 
             {/* Share Button */}
@@ -171,6 +219,7 @@ export default function FatimaChroniclesPage() {
               title="Share Article"
               type="button"
             >
+              <ClipboardCheck size={14} />
               <span>Share</span>
             </button>
 
@@ -183,7 +232,7 @@ export default function FatimaChroniclesPage() {
               onClick={() => soundFX.playPop()}
             >
               <span>Send Snap</span>
-              <span className="material-symbols-outlined text-[18px]">send</span>
+              <Send size={15} />
             </a>
           </div>
         </div>
@@ -201,10 +250,12 @@ export default function FatimaChroniclesPage() {
           </div>
           <div className="streak-score-group">
             <span className="badge-streak-highlight">
-              🔥 294 STREAK
+              <Flame size={14} style={{ display: 'inline-flex', verticalAlign: '-1px', marginRight: '4px' }} />
+              {liveStats.streak} STREAK
             </span>
             <span className="badge-score-highlight">
-              👻 204,099 SCORE
+              <Ghost size={14} style={{ display: 'inline-flex', verticalAlign: '-1px', marginRight: '4px' }} />
+              {liveStats.formattedScore} SCORE
             </span>
           </div>
         </div>
@@ -213,8 +264,8 @@ export default function FatimaChroniclesPage() {
         <header className="editorial-hero-header" id="breaking">
           {/* Eyebrow */}
           <div className="breaking-eyebrow">
-            <span className="material-symbols-outlined text-[16px]">local_fire_department</span>
-            <span>🚨 BREAKING SPECIAL INVESTIGATION | HISTORIC GAMING MILESTONE</span>
+            <AlertCircle size={15} />
+            <span>BREAKING SPECIAL INVESTIGATION | HISTORIC GAMING MILESTONE</span>
           </div>
 
           {/* Headline */}
@@ -242,14 +293,14 @@ export default function FatimaChroniclesPage() {
             <div className="byline-divider"></div>
 
             <div className="byline-stat">
-              <span className="material-symbols-outlined" style={{ color: 'var(--sakura-pink)' }}>schedule</span>
+              <Clock size={16} style={{ color: 'var(--sakura-pink)' }} />
               <span>4 min read</span>
             </div>
 
             <div className="byline-divider"></div>
 
             <div className="byline-stat">
-              <span style={{ color: 'var(--snap-yellow)' }}>☕</span>
+              <Coffee size={16} style={{ color: 'var(--snap-yellow)' }} />
               <span style={{ color: 'var(--snap-yellow)', fontWeight: 800 }}>VERIFIED TEA</span>
             </div>
           </div>
@@ -258,7 +309,7 @@ export default function FatimaChroniclesPage() {
           <div className="record-seal-box">
             <div className="seal-left">
               <div className="seal-icon-circle">
-                🏛️
+                <Landmark size={22} />
               </div>
               <div>
                 <div className="seal-tags-row">
@@ -272,7 +323,7 @@ export default function FatimaChroniclesPage() {
             </div>
 
             <div className="seal-right-pill">
-              <span className="material-symbols-outlined text-[16px]">verified</span>
+              <ShieldCheck size={16} />
               <span>CHRONICLED IN STONE</span>
             </div>
           </div>
@@ -283,7 +334,8 @@ export default function FatimaChroniclesPage() {
           {/* Photo Frame (Fashion & Fits) */}
           <div className="photo-card-wrapper" id="fashion-fits">
             <div className="photo-sticker-goddess">
-              👑 OFFICIAL GAME GODDESS
+              <Crown size={15} style={{ display: 'inline', verticalAlign: '-2px', marginRight: '5px' }} />
+              OFFICIAL GAME GODDESS
             </div>
 
             <div className="photo-glow-frame">
@@ -297,7 +349,7 @@ export default function FatimaChroniclesPage() {
                   <div className="photo-floating-pill">
                     <div className="pill-user-id">
                       <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--snap-yellow)' }}></span>
-                      <span>Haya ❤️ (itxhaya.04)</span>
+                      <span>Haya <Heart size={12} fill="#ff4d6d" style={{ display: 'inline', verticalAlign: '-1px', color: '#ff4d6d' }} /> (itxhaya.04)</span>
                     </div>
                     <span className="pill-status-untouchable">LEVEL: UNTOUCHABLE</span>
                   </div>
@@ -334,8 +386,10 @@ export default function FatimaChroniclesPage() {
 
                 <div className="field-cell">
                   <span className="field-label">Snapchat Record</span>
-                  <span className="field-value-primary">204,099+ Score</span>
-                  <span style={{ color: 'var(--snap-yellow)', fontWeight: 800, fontSize: '0.88rem' }}>🔥 294 Unbroken Days</span>
+                  <span className="field-value-primary">{liveStats.formattedScore}+ Score</span>
+                  <span style={{ color: 'var(--snap-yellow)', fontWeight: 800, fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Flame size={14} /> {liveStats.streak} Unbroken Days
+                  </span>
                 </div>
 
                 <div className="field-cell">
@@ -348,7 +402,7 @@ export default function FatimaChroniclesPage() {
                 <div className="field-cell">
                   <span className="field-label">Certified Status</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.2rem' }}>
-                    <span className="material-symbols-outlined" style={{ color: 'var(--sakura-pink)' }}>verified</span>
+                    <ShieldCheck size={18} style={{ color: 'var(--sakura-pink)' }} />
                     <span style={{ color: 'var(--sakura-pink)', fontWeight: 900, fontSize: '1rem' }}>Undefeated Champion</span>
                   </div>
                   <span style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>Zero losses recorded to date.</span>
@@ -357,7 +411,7 @@ export default function FatimaChroniclesPage() {
 
               {/* Quote */}
               <div className="dossier-quote-box">
-                <span style={{ fontSize: '1.6rem' }}>⚡</span>
+                <Zap size={22} style={{ color: 'var(--cyber-blue)', flexShrink: 0 }} />
                 <p className="dossier-quote-text">
                   &ldquo;Never underestimate a girl wearing cargo pants with a silver hijab who can swipe faster than the speed of 5G Wi-Fi.&rdquo;
                 </p>
@@ -372,12 +426,13 @@ export default function FatimaChroniclesPage() {
                   rel="noopener noreferrer"
                   onClick={() => soundFX.playPop()}
                 >
-                  <span style={{ fontSize: '1.4rem' }}>👻</span>
+                  <Ghost size={18} />
                   <span>Add Urooj on Snapchat</span>
-                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                  <ArrowRight size={18} />
                 </a>
                 <span className="dossier-disclaimer">
-                  ⚠️ Challenge at your own risk. Loss guaranteed.
+                  <AlertTriangle size={14} style={{ display: 'inline', verticalAlign: '-2px', marginRight: '4px' }} />
+                  Challenge at your own risk. Loss guaranteed.
                 </span>
               </div>
             </div>
@@ -455,18 +510,24 @@ export default function FatimaChroniclesPage() {
                   </div>
                 </div>
 
-                <div className="meter-result-footnote">
-                  Result: Total destruction of male ego in under 120 seconds.
+                <div className="bar-row-block">
+                  <div className="bar-label-line">
+                    <span style={{ color: 'var(--text-secondary)' }}>Actual Destruction Inflicted:</span>
+                    <span style={{ color: 'var(--snap-yellow)', fontWeight: 800 }}>10,000% Catastrophic</span>
+                  </div>
+                  <div className="progress-track-h">
+                    <div className="bar-fill-destructive"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </article>
 
-          {/* Hall of Fame (Act II: 4 Games & Data Analytics) */}
+          {/* Hall of Fame (Act II) */}
           <article id="hall-of-fame">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <div className="act-heading-row" style={{ marginBottom: 0 }}>
-                <span className="act-tag-badge" style={{ background: 'var(--electric-purple)' }}>ACT II</span>
+            <div className="act-heading-row">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span className="act-tag-badge" style={{ background: 'var(--electric-purple)', color: '#fff' }}>ACT II</span>
                 <h2 className="act-title-text">The Blitzkrieg of 100% Scores</h2>
               </div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--snap-yellow)', fontWeight: 800 }}>
@@ -480,7 +541,9 @@ export default function FatimaChroniclesPage() {
               <div className="game-bento-card" onMouseEnter={() => soundFX.playPop()}>
                 <div>
                   <div className="game-header-top">
-                    <span className="game-emoji-icon">🎾</span>
+                    <span className="game-emoji-icon">
+                      <Gamepad2 size={24} style={{ color: 'var(--cyber-blue)' }} />
+                    </span>
                     <span className="game-score-tag">100% CLEAN</span>
                   </div>
                   <h3 className="game-card-title">Bitmoji Tennis</h3>
@@ -498,7 +561,9 @@ export default function FatimaChroniclesPage() {
               <div className="game-bento-card" onMouseEnter={() => soundFX.playPop()}>
                 <div>
                   <div className="game-header-top">
-                    <span className="game-emoji-icon">🌊</span>
+                    <span className="game-emoji-icon">
+                      <Activity size={24} style={{ color: 'var(--sakura-pink)' }} />
+                    </span>
                     <span className="game-score-tag">100% SUPREME</span>
                   </div>
                   <h3 className="game-card-title">Aqua Park Rampage</h3>
@@ -516,7 +581,9 @@ export default function FatimaChroniclesPage() {
               <div className="game-bento-card" onMouseEnter={() => soundFX.playPop()}>
                 <div>
                   <div className="game-header-top">
-                    <span className="game-emoji-icon">🍔</span>
+                    <span className="game-emoji-icon">
+                      <PartyPopper size={24} style={{ color: 'var(--snap-yellow)' }} />
+                    </span>
                     <span className="game-score-tag">100% PERFECT</span>
                   </div>
                   <h3 className="game-card-title">Ready Chef Go!</h3>
@@ -534,7 +601,9 @@ export default function FatimaChroniclesPage() {
               <div className="game-bento-card" onMouseEnter={() => soundFX.playPop()}>
                 <div>
                   <div className="game-header-top">
-                    <span className="game-emoji-icon">🧠</span>
+                    <span className="game-emoji-icon">
+                      <Crosshair size={24} style={{ color: 'var(--electric-purple)' }} />
+                    </span>
                     <span className="game-score-tag">100% GALAXY</span>
                   </div>
                   <h3 className="game-card-title">Snapchat Trivia</h3>
@@ -560,7 +629,7 @@ export default function FatimaChroniclesPage() {
                     Comparative Performance Analysis
                   </h3>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.8rem', fontWeight: 700 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.8rem', fontWeight: 700, flexWrap: 'wrap' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--text-muted)' }}></span> Expected by Men
                   </span>
@@ -572,7 +641,7 @@ export default function FatimaChroniclesPage() {
 
               {/* SVG Chart */}
               <div className="svg-chart-container">
-                <svg className="w-full" style={{ width: '100%', height: '140px' }} fill="none" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-full" style={{ width: '100%', height: '140px', minWidth: '480px' }} fill="none" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
                   {/* Grid lines */}
                   <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="120" x2="120" y1="15" y2="125"></line>
                   <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="240" x2="240" y1="15" y2="125"></line>
@@ -599,7 +668,7 @@ export default function FatimaChroniclesPage() {
                 </svg>
               </div>
 
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', textAlign: 'center', fontStyle: 'italic' }}>
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', textAlign: 'center', fontStyle: 'italic', marginTop: '0.5rem' }}>
                 Data verified by the International Bureau of Snapchat Weights, Measures &amp; Clowns.
               </p>
             </div>
@@ -620,10 +689,12 @@ export default function FatimaChroniclesPage() {
                 &ldquo;She didn&apos;t merely finish the stages. She played with one hand, readjusted her outfit with the other, periodically winked at the screen, and still scored quadruple what anyone in the group chat could muster. She has earned supreme immunity from any future gaming critiques until the end of the century.&rdquo;
               </p>
               <div className="affidavit-signed-bar">
-                <span style={{ fontSize: '2.2rem' }}>📜</span>
+                <ScrollText size={32} style={{ color: 'var(--snap-yellow)', flexShrink: 0 }} />
                 <div>
                   <div style={{ fontWeight: 800, color: '#fff', fontSize: '1rem' }}>Witness Affidavits Signed &amp; Sealed</div>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--sakura-pink)', fontWeight: 600 }}>Witnessed by 294 Snapchat Streak recipients and verified by the stars.</div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--sakura-pink)', fontWeight: 600 }}>
+                    Witnessed by {liveStats.streak} Snapchat Streak recipients and verified by the stars.
+                  </div>
                 </div>
               </div>
             </div>
@@ -631,12 +702,13 @@ export default function FatimaChroniclesPage() {
 
           {/* The Grand Moral of the Story: Highlight Callout Box */}
           <section className="grand-moral-banner" id="moral">
-            <span className="moral-floating-sticker-1 select-none">💅</span>
-            <span className="moral-floating-sticker-2 select-none">✨</span>
+            <Sparkles size={24} className="moral-floating-sticker-1 select-none" style={{ color: 'var(--sakura-pink)' }} />
+            <Crown size={24} className="moral-floating-sticker-2 select-none" style={{ color: 'var(--snap-yellow)' }} />
 
             <div className="moral-content-max">
               <div className="moral-pill-tag">
-                <span>💡</span> THE SACRED TAKEAWAY
+                <Lightbulb size={16} />
+                <span>THE SACRED TAKEAWAY</span>
               </div>
 
               <h2 className="moral-headline-quote">
@@ -659,7 +731,7 @@ export default function FatimaChroniclesPage() {
                   type="button"
                   onClick={handleQueenClick}
                 >
-                  <span>👑</span>
+                  <Crown size={18} />
                   <span>Long Live Queen Urooj</span>
                   <span className="reaction-count-chip" style={{ background: '#b7004f', color: '#fff' }}>
                     {queenCount.toLocaleString()}
@@ -672,7 +744,7 @@ export default function FatimaChroniclesPage() {
                   type="button"
                   onClick={handleGoatClick}
                 >
-                  <span>🔥</span>
+                  <Flame size={18} />
                   <span>100% Goat Status</span>
                   <span className="reaction-count-chip" style={{ background: '#000', color: '#fff' }}>
                     {goatCount.toLocaleString()}
@@ -686,7 +758,7 @@ export default function FatimaChroniclesPage() {
                   rel="noopener noreferrer"
                   onClick={() => soundFX.playPop()}
                 >
-                  <span>👻</span>
+                  <Ghost size={18} />
                   <span>Add The Legend</span>
                 </a>
               </div>
@@ -706,10 +778,12 @@ export default function FatimaChroniclesPage() {
               </p>
               <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1rem', flexWrap: 'wrap' }}>
                 <span className="badge-streak-highlight" style={{ fontSize: '0.72rem' }}>
-                  🔥 365-Day Streak Active
+                  <Flame size={13} style={{ display: 'inline', verticalAlign: '-1px', marginRight: '3px' }} />
+                  {liveStats.streak}-Day Streak Active
                 </span>
                 <span className="badge-score-highlight" style={{ fontSize: '0.72rem' }}>
-                  ✨ Certified Royal Tea
+                  <Sparkles size={13} style={{ display: 'inline', verticalAlign: '-1px', marginRight: '3px' }} />
+                  Certified Royal Tea
                 </span>
               </div>
             </div>
@@ -719,44 +793,50 @@ export default function FatimaChroniclesPage() {
               <div className="footer-links-list">
                 <a className="footer-link-item" href="#breaking">Editorial Headlines</a>
                 <a className="footer-link-item" href="#dossier">The Daily Streak Log</a>
-                <a className="footer-link-item" href="#hall-of-fame">Spill The Karak Tea</a>
-                <a className="footer-link-item" href="#fashion-fits">Bestie Archives</a>
+                <a className="footer-link-item" href="#hall-of-fame">Snapchat Hall of Fame</a>
+                <a className="footer-link-item" href="#fashion-fits">OOTD Outfit Vault</a>
+                <a className="footer-link-item" href="#confession-wall">Massna Confession Box</a>
               </div>
             </div>
 
             <div>
               <div className="footer-heading-col">Send Gossip</div>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '0.75rem', lineHeight: 1.5 }}>
-                Got an exclusive candid snap or insider story? Drop it into our anonymous candy drop-box.
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
+                Did someone challenge Fatima&apos;s high score? Report it immediately to the high council of tea spillers.
               </p>
               <a 
                 className="snap-cta-btn" 
                 href="https://snapchat.com/add/itxhaya.04"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontSize: '0.85rem', padding: '0 1rem' }}
+                style={{ width: '100%', justifyContent: 'center' }}
+                onClick={() => soundFX.playPop()}
               >
-                Spill Anonymously
+                <span>Add itxhaya.04</span>
+                <Send size={15} />
               </a>
             </div>
           </div>
 
           <div className="footer-bottom-bar">
             <div>
-              &copy; 2026 The Fatima Gazette &amp; Chronicles. All glam rights reserved. Stay extra, never ordinary.
+              &copy; 2026 The Fatima Gazette &amp; Chronicles. All glam rights reserved. Stay humble, keep streaking.
             </div>
-            <div style={{ display: 'flex', gap: '1.25rem' }}>
-              <span>Tea Policy</span>
-              <span>Sticker Rights</span>
-              <span>Press Confetti</span>
+            <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+              <span style={{ color: 'var(--text-muted)' }}>Issue #77</span>
+              <span style={{ color: 'var(--text-muted)' }}>•</span>
+              <span style={{ color: 'var(--text-muted)' }}>Verified Clean Sweep</span>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Toast Notice */}
-      <div className={`toast-notice ${showToast ? 'show' : ''}`} role="alert">
-        {toastMessage}
+      {/* Toast Notification Pop-up */}
+      <div 
+        className={`toast-notice ${showToast ? 'show' : ''}`}
+        role="alert"
+      >
+        <span>{toastMessage}</span>
       </div>
     </>
   );

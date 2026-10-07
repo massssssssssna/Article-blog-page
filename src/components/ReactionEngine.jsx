@@ -2,14 +2,23 @@
 
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
+import { Flame, Trophy, Zap, Heart, Sparkles } from 'lucide-react';
 import { soundFX } from '../utils/soundFx';
 
+const REACTION_ICONS = {
+  fire: Flame,
+  trophy: Trophy,
+  zap: Zap,
+  heart: Heart,
+  mindblown: Sparkles
+};
+
 const initialReactions = [
-  { id: 'fire', emoji: '🔥', label: 'Hype', count: 482 },
-  { id: 'trophy', emoji: '🏆', label: 'Legend', count: 395 },
-  { id: 'zap', emoji: '⚡', label: 'Fast Reflex', count: 284 },
-  { id: 'heart', emoji: '💖', label: 'Inspiring', count: 521 },
-  { id: 'mindblown', emoji: '🤯', label: 'Tactical Mind', count: 310 }
+  { id: 'fire', label: 'Hype', count: 482 },
+  { id: 'trophy', label: 'Legend', count: 395 },
+  { id: 'zap', label: 'Fast Reflex', count: 284 },
+  { id: 'heart', label: 'Inspiring', count: 521 },
+  { id: 'mindblown', label: 'Tactical Mind', count: 310 }
 ];
 
 export default function ReactionEngine() {
@@ -21,7 +30,10 @@ export default function ReactionEngine() {
       const savedCounts = localStorage.getItem('urooj_article_reactions');
       if (savedCounts) {
         try {
-          setReactions(JSON.parse(savedCounts));
+          const parsed = JSON.parse(savedCounts);
+          if (Array.isArray(parsed)) {
+            setReactions(parsed);
+          }
         } catch (e) {}
       }
       const savedUser = localStorage.getItem('urooj_user_reactions');
@@ -71,14 +83,16 @@ export default function ReactionEngine() {
       <div className="reactions-btn-row">
         {reactions.map((item) => {
           const hasVoted = !!userClicked[item.id];
+          const IconComponent = REACTION_ICONS[item.id] || Sparkles;
           return (
             <button
               key={item.id}
               className={`reaction-btn ${hasVoted ? 'active' : ''}`}
               onClick={() => handleReact(item.id)}
               title={`React with ${item.label}`}
+              type="button"
             >
-              <span>{item.emoji}</span>
+              <IconComponent size={18} className="reaction-svg-icon" />
               <span>{item.label}</span>
               <span className="reaction-count">{item.count}</span>
             </button>

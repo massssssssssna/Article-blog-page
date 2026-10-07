@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Award, Swords, Flame, Sparkles } from 'lucide-react';
+import { BookOpen, Award, Swords, Flame, Sparkles, Zap, Trophy } from 'lucide-react';
 import ReflexMiniGame from './ReflexMiniGame';
 import InteractiveTrophyCabinet from './InteractiveTrophyCabinet';
 import ReactionEngine from './ReactionEngine';
@@ -56,7 +56,9 @@ export default function ArticleLayout({ chapters, pullQuotes, gameplayRecords, t
               onClick={() => soundFX.playPop()}
               style={{ color: 'var(--snap-yellow)' }}
             >
-              <span className="toc-number">⚡</span>
+              <span className="toc-number" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <Zap size={14} />
+              </span>
               <span>Reflex Mini-Game</span>
             </a>
             <a 
@@ -65,7 +67,9 @@ export default function ArticleLayout({ chapters, pullQuotes, gameplayRecords, t
               onClick={() => soundFX.playPop()}
               style={{ color: 'var(--sakura-pink)' }}
             >
-              <span className="toc-number">🏆</span>
+              <span className="toc-number" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <Trophy size={14} />
+              </span>
               <span>Trophy Cabinet</span>
             </a>
           </nav>
@@ -131,8 +135,8 @@ export default function ArticleLayout({ chapters, pullQuotes, gameplayRecords, t
                       </div>
                       <div className="record-badge-row">
                         <span>{rec.category}</span>
-                        <span style={{ color: 'var(--emerald-green)', fontWeight: 700 }}>
-                          🔥 {rec.winStreak}
+                        <span style={{ color: 'var(--emerald-green)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Flame size={14} /> {rec.winStreak}
                         </span>
                       </div>
                     </div>

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { Zap, RotateCcw, Award, Play } from 'lucide-react';
+import { Zap, RotateCcw, Award, Play, Target } from 'lucide-react';
 import { soundFX } from '../utils/soundFx';
 
 export default function ReflexMiniGame() {
@@ -65,7 +65,7 @@ export default function ReflexMiniGame() {
     if (elapsed <= 220) {
       soundFX.playTargetHit(true);
       soundFX.playTrophyChime();
-      setRatingMessage('🔥 UROOJ-TIER GODLIKE REFLEXES! You matched the Snapchat Legend!');
+      setRatingMessage('[GODLIKE] UROOJ-TIER REFLEXES! You matched the Snapchat Legend!');
       confetti({
         particleCount: 80,
         spread: 70,
@@ -73,13 +73,13 @@ export default function ReflexMiniGame() {
       });
     } else if (elapsed <= 280) {
       soundFX.playTargetHit(false);
-      setRatingMessage('⚡ Pro Mobile Reflexes! You can hold your own in top lobbies.');
+      setRatingMessage('[PRO] Pro Mobile Reflexes! You can hold your own in top lobbies.');
     } else if (elapsed <= 360) {
       soundFX.playTargetHit(false);
-      setRatingMessage('👍 Solid reflexes! But Urooj would have cut your perimeter already.');
+      setRatingMessage('[SOLID] Solid reflexes! But Urooj would have cut your perimeter already.');
     } else {
       soundFX.playPop();
-      setRatingMessage('🐢 Too slow! Color Galaxy territory lost to the Sakura Queen.');
+      setRatingMessage('[SLOW] Too slow! Color Galaxy territory lost to the Sakura Queen.');
     }
   };
 
@@ -88,7 +88,7 @@ export default function ReflexMiniGame() {
       clearTimeout(timerTimeoutRef.current);
       setGameState('idle');
       soundFX.playPop();
-      setRatingMessage('⚠️ Too early! Wait for the snap target to appear before striking.');
+      setRatingMessage('[EARLY] Too early! Wait for the snap target to appear before striking.');
     }
   };
 
@@ -136,10 +136,10 @@ export default function ReflexMiniGame() {
           <div 
             id="reflex-active-target"
             className="target-orb"
-            style={{ top: targetPos.top, left: targetPos.left }}
+            style={{ top: targetPos.top, left: targetPos.left, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             onClick={handleTargetClick}
           >
-            🎯
+            <Target size={30} color="#000" strokeWidth={2.5} />
           </div>
         )}
 
