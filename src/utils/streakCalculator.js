@@ -1,19 +1,32 @@
 /**
  * Utility for calculating live dynamic Snapchat streak and snap score.
  * 
- * Base Reference:
- * - Base Streak: 294
- * - Base Snap Score: 204,099
- * - Daily Streak Increment: +1 every calendar day
- * - Daily Score Increment: +400 every calendar day
+ * Rules:
+ * - Current Base Streak: 295
+ * - Current Base Snap Score: 204,499
+ * - Daily Rollover Cutoff: 5:00 AM local time (Subha 5:00 baje ke baad daily rollover)
+ * - Daily Increment: +1 Streak, +400 Snap Score every day after 05:00 AM
  */
 
-export const BASE_STREAK = 294;
-export const BASE_SCORE = 204099;
+export const BASE_STREAK = 295;
+export const BASE_SCORE = 204499;
 export const DAILY_SCORE_STEP = 400;
+export const RESET_HOUR = 5; // 5:00 AM daily reset boundary
+
+/**
+ * Returns normalized timestamp for the start of the "streak day" (5:00 AM boundary).
+ * Times between 00:00:00 and 04:59:59 belong to the previous streak day.
+ * At exactly 05:00:00 AM, the new streak day begins.
+ */
+export function getEffectiveStreakDay(date = new Date()) {
+  const d = new Date(date);
+  // Shift back by RESET_HOUR (5 hours): 00:00 - 04:59 shifts to previous calendar day
+  const shifted = new Date(d.getTime() - (RESET_HOUR * 60 * 60 * 1000));
+  return new Date(shifted.getFullYear(), shifted.getMonth(), shifted.getDate()).getTime();
+}
 
 export function getLiveStreakAndScore(customDate = null) {
-  // Support optional URL query parameter for instant preview/testing: ?day=1 or ?streakDays=1
+  // Support optional URL query parameter for instant preview/testing: ?day=1 or ?streakDay=1
   if (typeof window !== 'undefined' && window.location && window.location.search) {
     try {
       const params = new URLSearchParams(window.location.search);
@@ -35,24 +48,24 @@ export function getLiveStreakAndScore(customDate = null) {
   }
 
   const now = customDate ? new Date(customDate) : new Date();
-  const currentMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const currentStreakDay = getEffectiveStreakDay(now);
 
-  let anchorMidnight = null;
+  let anchorStreakDay = null;
 
   // Use persistent anchor in client browser storage
   if (typeof window !== 'undefined' && window.localStorage) {
     try {
-      const stored = window.localStorage.getItem('urooj_snap_streak_anchor_v2');
+      const stored = window.localStorage.getItem('urooj_snap_streak_anchor_5am_v2');
       if (stored) {
         const parsed = parseInt(stored, 10);
-        if (!isNaN(parsed) && parsed <= currentMidnight) {
-          anchorMidnight = parsed;
+        if (!isNaN(parsed) && parsed <= currentStreakDay) {
+          anchorStreakDay = parsed;
         }
       }
-      if (!anchorMidnight) {
+      if (!anchorStreakDay) {
         // Set first visit / today as anchor
-        window.localStorage.setItem('urooj_snap_streak_anchor_v2', currentMidnight.toString());
-        anchorMidnight = currentMidnight;
+        window.localStorage.setItem('urooj_snap_streak_anchor_5am_v2', currentStreakDay.toString());
+        anchorStreakDay = currentStreakDay;
       }
     } catch {
       // Ignore localStorage errors
@@ -60,17 +73,17 @@ export function getLiveStreakAndScore(customDate = null) {
   }
 
   // Fallback for SSR or if localStorage is not set
-  if (!anchorMidnight) {
-    const base2026 = new Date(2026, 9, 7).getTime();
-    if (currentMidnight >= base2026) {
-      anchorMidnight = base2026;
+  if (!anchorStreakDay) {
+    const base2026Day = getEffectiveStreakDay(new Date(2026, 9, 7, 12, 0, 0));
+    if (currentStreakDay >= base2026Day) {
+      anchorStreakDay = base2026Day;
     } else {
-      anchorMidnight = currentMidnight;
+      anchorStreakDay = currentStreakDay;
     }
   }
 
   const msInDay = 24 * 60 * 60 * 1000;
-  const daysDiff = Math.max(0, Math.floor((currentMidnight - anchorMidnight) / msInDay));
+  const daysDiff = Math.max(0, Math.floor((currentStreakDay - anchorStreakDay) / msInDay));
 
   const streak = BASE_STREAK + daysDiff;
   const score = BASE_SCORE + (daysDiff * DAILY_SCORE_STEP);
