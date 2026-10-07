@@ -232,3 +232,11 @@ body {
   justify-content: center;
   padding: 1.5rem;
 }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(255, 252, 0, 0.2);
+  background: #06050b;
+  padding: 4rem 1.5rem 2rem;
+  margin-top: 5rem;
+}
