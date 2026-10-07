@@ -52,11 +52,12 @@ export default function FatimaChroniclesPage() {
 
   useEffect(() => {
     // Dynamic real-time streak and snap score calculation
-    setLiveStats(getLiveStreakAndScore());
+    const updateStats = () => setLiveStats(getLiveStreakAndScore());
+    updateStats();
 
-    const timer = setInterval(() => {
-      setLiveStats(getLiveStreakAndScore());
-    }, 60000);
+    const timer = setInterval(updateStats, 30000); // Check every 30s for rollover
+    window.addEventListener('focus', updateStats);
+    document.addEventListener('visibilitychange', updateStats);
 
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -86,6 +87,8 @@ export default function FatimaChroniclesPage() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('focus', updateStats);
+      document.removeEventListener('visibilitychange', updateStats);
       clearInterval(timer);
     };
   }, []);
