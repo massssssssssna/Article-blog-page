@@ -52,10 +52,11 @@ export function getLiveStreakAndScore(customDate = null) {
 
   let anchorStreakDay = null;
 
-  // Use persistent anchor in client browser storage
+  // Use persistent anchor in client browser storage with fresh v3 key
   if (typeof window !== 'undefined' && window.localStorage) {
     try {
-      const stored = window.localStorage.getItem('urooj_snap_streak_anchor_5am_v2');
+      const STORAGE_KEY = 'urooj_snap_streak_anchor_295_v3';
+      const stored = window.localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = parseInt(stored, 10);
         if (!isNaN(parsed) && parsed <= currentStreakDay) {
@@ -64,7 +65,7 @@ export function getLiveStreakAndScore(customDate = null) {
       }
       if (!anchorStreakDay) {
         // Set first visit / today as anchor
-        window.localStorage.setItem('urooj_snap_streak_anchor_5am_v2', currentStreakDay.toString());
+        window.localStorage.setItem(STORAGE_KEY, currentStreakDay.toString());
         anchorStreakDay = currentStreakDay;
       }
     } catch {
