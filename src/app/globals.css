@@ -419,41 +419,28 @@ body {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  flex-wrap: wrap;
 }
 
 .badge-streak-highlight {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
   background: var(--snap-yellow);
   color: #000;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 800;
-  padding: 0.28rem 0.75rem;
+  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 0 14px var(--snap-yellow-glow);
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  box-shadow: 0 0 12px var(--snap-yellow-glow);
 }
 
 .badge-score-highlight {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
   background: rgba(255, 117, 143, 0.15);
-  border: 1px solid rgba(255, 117, 143, 0.4);
+  border: 1px solid rgba(255, 117, 143, 0.35);
   color: var(--sakura-pink);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 800;
-  padding: 0.28rem 0.75rem;
+  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
-  letter-spacing: 0.5px;
-  white-space: nowrap;
 }
 
 /* Editorial Hero Header */
@@ -1272,10 +1259,10 @@ body {
   position: relative;
   background: linear-gradient(135deg, #b7004f 0%, #e40a65 50%, #821dda 100%);
   border-radius: var(--radius-xl);
-  padding: 3rem 2.5rem;
+  padding: 3.25rem 2.75rem 3.5rem;
   box-shadow: 0 15px 45px rgba(183, 0, 79, 0.45);
   overflow: hidden;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .moral-floating-sticker-1 {
@@ -1288,9 +1275,13 @@ body {
 
 .moral-floating-sticker-2 {
   position: absolute;
-  bottom: 1.5rem;
-  left: 2rem;
+  bottom: 1.75rem;
+  right: 2.5rem;
+  left: auto;
   font-size: 2rem;
+  opacity: 0.85;
+  pointer-events: none;
+  animation: bounceSticker 2.4s infinite alternate-reverse;
 }
 
 @keyframes bounceSticker {
@@ -1342,22 +1333,23 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
 }
 
 .reaction-btn-moral {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1.4rem;
+  gap: 0.55rem;
+  padding: 0.65rem 1.25rem;
   border-radius: var(--radius-full);
   font-family: var(--font-headline);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 800;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: none;
+  white-space: nowrap;
 }
 
 .reaction-btn-moral:hover {
@@ -1495,15 +1487,14 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Comprehensive Responsive Media Queries for Mobile Browsers */
+/* Responsive Media Queries */
 @media (max-width: 1024px) {
   .bento-hero-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
   .photo-glow-frame {
-    max-width: 380px;
-    margin: 0 auto;
+    max-width: 360px;
   }
   .games-bento-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1517,376 +1508,29 @@ body {
 }
 
 @media (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-    width: 100%;
+  .header-inner {
+    padding: 0 1rem;
   }
-
-  .site-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .header-inner-container {
-    padding: 0.5rem 0.85rem;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-  }
-
-  .header-brand {
-    gap: 0.5rem;
-  }
-
-  .brand-title-main {
-    font-size: 1rem;
-  }
-
-  .brand-tagline-sub {
-    font-size: 0.62rem;
-  }
-
-  /* Scrollable horizontal navigation ribbon on mobile */
   .header-nav-pill {
-    order: 3;
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0.25rem 0.45rem;
-    gap: 0.2rem;
-  }
-
-  .header-nav-pill::-webkit-scrollbar {
     display: none;
   }
-
-  .nav-item-link {
-    font-size: 0.74rem;
-    padding: 0.3rem 0.65rem;
-  }
-
-  .header-actions {
-    gap: 0.4rem;
-  }
-
-  .action-btn-pill {
-    height: 32px;
-    padding: 0 0.65rem;
-    font-size: 0.72rem;
-  }
-
-  .snap-cta-btn {
-    height: 32px;
-    padding: 0 0.75rem;
-    font-size: 0.75rem;
-  }
-
   .main-content {
-    padding: 6.8rem 0.85rem 3.5rem;
-    width: 100%;
-    overflow-x: hidden;
+    padding: 5.5rem 1rem 3.5rem;
   }
-
-  /* Responsive Announcement Bar */
-  .announcement-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.65rem;
-    padding: 0.75rem 0.85rem;
-    border-radius: var(--radius-md);
-    margin-bottom: 1.75rem;
-  }
-
-  .dossier-pill-tag {
-    justify-content: center;
-    text-align: center;
-    font-size: 0.68rem;
-    flex-wrap: wrap;
-    letter-spacing: 0.8px;
-  }
-
-  .streak-score-group {
-    width: 100%;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .badge-streak-highlight,
-  .badge-score-highlight {
-    flex: 1 1 auto;
-    text-align: center;
-    justify-content: center;
-    padding: 0.35rem 0.6rem;
-    font-size: 0.74rem;
-  }
-
-  /* Editorial Hero Header */
-  .editorial-hero-header {
-    margin-bottom: 2.25rem;
-  }
-
-  .breaking-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.8px;
-    padding: 0.28rem 0.65rem;
-    white-space: normal;
-    text-align: center;
-    line-height: 1.3;
-  }
-
   .headline-super {
-    font-size: clamp(1.75rem, 6.5vw, 2.5rem);
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-    word-break: break-word;
-  }
-
-  .lead-subtitle {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin-bottom: 1.25rem;
-  }
-
-  .byline-meta-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-    padding: 0.85rem 1rem;
-  }
-
-  .byline-divider {
-    display: none;
-  }
-
-  /* Record Seal Box */
-  .record-seal-box {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 1rem;
-  }
-
-  .seal-left {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-  }
-
-  .seal-statement-text {
-    font-size: 0.88rem;
-    line-height: 1.45;
-  }
-
-  .seal-right-pill {
-    align-self: flex-start;
-    font-size: 0.7rem;
-    padding: 0.3rem 0.75rem;
-  }
-
-  /* Bento Hero Section */
-  .bento-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .photo-glow-frame {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .dossier-card-wrapper {
-    padding: 1rem 0.75rem;
-  }
-
-  .dossier-main-card {
-    padding: 1rem 0.85rem;
-  }
-
-  .dossier-header-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
-  }
-
-  .dossier-fields-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
-  .field-cell {
-    padding: 0.75rem 0.85rem;
-  }
-
-  .field-value-primary {
-    font-size: 1.15rem;
-  }
-
-  .dossier-quote-box {
-    padding: 0.85rem 1rem;
-    font-size: 0.88rem;
-  }
-
-  .dossier-cta-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.65rem;
-  }
-
-  .dossier-snap-button {
-    width: 100%;
-    justify-content: center;
-    font-size: 0.88rem;
-    height: 42px;
-  }
-
-  .dossier-disclaimer {
-    text-align: center;
-    font-size: 0.75rem;
-  }
-
-  /* Metric Pulse Cards */
-  .metric-pulse-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
-  .metric-pulse-card {
-    padding: 0.85rem 1rem;
-  }
-
-  .metric-huge-stat {
     font-size: 2.2rem;
   }
-
-  /* Games Bento Grid */
+  .dossier-fields-grid {
+    grid-template-columns: 1fr;
+  }
+  .metric-pulse-grid {
+    grid-template-columns: 1fr;
+  }
   .games-bento-grid {
     grid-template-columns: 1fr;
-    gap: 0.85rem;
   }
-
-  .game-bento-card {
-    padding: 1.15rem 1rem;
-  }
-
-  /* Analytics & SVG Chart */
-  .analytics-card-section {
-    padding: 1.15rem 0.85rem;
-  }
-
-  .analytics-header-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-  }
-
-  .svg-chart-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-  }
-
-  /* Witness Affidavits */
-  .witness-statement-card {
-    padding: 1.15rem 1rem;
-  }
-
-  .witness-prose-text {
-    font-size: 1.05rem;
-  }
-
-  .affidavit-signed-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-    padding: 0.85rem 1rem;
-  }
-
-  /* Grand Moral Banner */
-  .grand-moral-banner {
-    padding: 1.85rem 1rem;
-    overflow: hidden;
-  }
-
-  .moral-floating-sticker-1,
-  .moral-floating-sticker-2 {
-    display: none;
-  }
-
-  .moral-headline-quote {
-    font-size: 1.45rem;
-  }
-
-  .moral-quote-highlight {
-    font-size: 1.05rem;
-    padding-left: 0.75rem;
-    border-left-width: 3px;
-  }
-
-  .moral-reaction-buttons-row {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.65rem;
-  }
-
-  .reaction-btn-moral {
-    width: 100%;
-    justify-content: center;
-    font-size: 0.85rem;
-    padding: 0.75rem 1rem;
-  }
-
-  /* Footer */
-  .site-footer {
-    padding: 3rem 1rem 1.5rem;
-    margin-top: 3.5rem;
-  }
-
   .footer-grid-top {
     grid-template-columns: 1fr;
     gap: 1.75rem;
-  }
-
-  .footer-bottom-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .headline-super {
-    font-size: 1.65rem;
-  }
-
-  .dossier-pill-tag {
-    font-size: 0.64rem;
-  }
-
-  .badge-streak-highlight,
-  .badge-score-highlight {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.5rem;
-  }
-
-  .photo-floating-pill {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.68rem;
-  }
-
-  .polaroid-caption-title {
-    font-size: 1rem;
-  }
-
-  .polaroid-caption-sub {
-    font-size: 0.75rem;
-  }
-
-  .toast-notice {
-    width: 92%;
-    font-size: 0.78rem;
-    padding: 0.55rem 0.85rem;
   }
 }
