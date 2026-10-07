@@ -42,5 +42,31 @@ export default function Footer({ meta }) {
               <div>Project ID: <span>{meta.projectHubId}</span></div>
               <div>Screen ID: <span>{meta.screenId}</span></div>
               <div>Screen Name: <span>{meta.screenTitle}</span></div>
-      
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <div>
+              &copy; 2026 Antigravity Editorial • Next.js Interactive Publication. All rights reserved.
+            </div>
+            <div style={{ display: 'flex', gap: '1.5rem' }}>
+              <span>Engineered with Next.js &amp; Vanilla CSS</span>
+              <span>Reflex Engine v2.4</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating Back to Top Button */}
+      <button
+        id="back-to-top-btn"
+        className={`back-to-top-btn ${showTopBtn ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        title="Scroll to Top"
+        aria-label="Scroll back to top"
+      >
+        <ArrowUp size={22} />
+      </button>
+    </>
+  );
 }
