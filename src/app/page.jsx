@@ -641,28 +641,43 @@ export default function FatimaChroniclesPage() {
 
               {/* SVG Chart */}
               <div className="svg-chart-container">
-                <svg className="w-full" style={{ width: '100%', height: '140px', minWidth: '480px' }} fill="none" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-full" style={{ width: '100%', height: 'auto', minWidth: '520px', display: 'block' }} fill="none" viewBox="0 0 720 150" xmlns="http://www.w3.org/2000/svg">
+                  {/* Subtle percentage headers */}
+                  <text fill="rgba(255, 255, 255, 0.3)" fontFamily="var(--font-mono)" fontSize="9" fontWeight="700" textAnchor="middle" x="215" y="18">0%</text>
+                  <text fill="rgba(255, 255, 255, 0.3)" fontFamily="var(--font-mono)" fontSize="9" fontWeight="700" textAnchor="middle" x="335" y="18">25%</text>
+                  <text fill="rgba(255, 255, 255, 0.3)" fontFamily="var(--font-mono)" fontSize="9" fontWeight="700" textAnchor="middle" x="455" y="18">50%</text>
+                  <text fill="rgba(255, 255, 255, 0.3)" fontFamily="var(--font-mono)" fontSize="9" fontWeight="700" textAnchor="middle" x="575" y="18">75%</text>
+                  <text fill="rgba(255, 255, 255, 0.3)" fontFamily="var(--font-mono)" fontSize="9" fontWeight="700" textAnchor="middle" x="695" y="18">100%</text>
+
                   {/* Grid lines */}
-                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="120" x2="120" y1="15" y2="125"></line>
-                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="240" x2="240" y1="15" y2="125"></line>
-                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="360" x2="360" y1="15" y2="125"></line>
-                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="480" x2="480" y1="15" y2="125"></line>
+                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="215" x2="215" y1="24" y2="135"></line>
+                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="335" x2="335" y1="24" y2="135"></line>
+                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="455" x2="455" y1="24" y2="135"></line>
+                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="575" x2="575" y1="24" y2="135"></line>
+                  <line stroke="rgba(255, 255, 255, 0.08)" strokeDasharray="4 4" x1="695" x2="695" y1="24" y2="135"></line>
 
                   {/* Row 1: Expected */}
-                  <text fill="#94A3B8" fontFamily="var(--font-mono)" fontSize="11" fontWeight="700" x="10" y="44">Expected by Skeptic</text>
-                  <rect fill="#475569" height="22" rx="11" width="12" x="140" y="30"></rect>
-                  <text fill="#64748B" fontFamily="var(--font-mono)" fontSize="11" fontWeight="700" x="160" y="45">0.2% (Failed Level 1)</text>
+                  <text fill="#94A3B8" fontFamily="var(--font-mono)" fontSize="11" fontWeight="700" x="15" y="49">Expected by Skeptic</text>
+                  <rect fill="#475569" height="24" rx="12" width="16" x="215" y="35"></rect>
+                  <text fill="#94A3B8" fontFamily="var(--font-mono)" fontSize="11" fontWeight="700" x="242" y="51">0.2% (Failed Level 1)</text>
 
-                  {/* Row 2: Actual */}
-                  <text fill="#FF758F" fontFamily="var(--font-mono)" fontSize="12" fontWeight="800" x="10" y="96">Actual Urooj Reality</text>
-                  <rect fill="url(#sakuraGrad)" height="24" rx="12" width="410" x="140" y="80"></rect>
-                  <text fill="#FFFFFF" fontFamily="var(--font-headline)" fontSize="13" fontWeight="900" x="460" y="97">100.0% GOD LEVEL</text>
+                  {/* Row 2: Actual Urooj Reality (Ample spacing from x=15 to x=215) */}
+                  <text fill="#FF758F" fontFamily="var(--font-mono)" fontSize="12" fontWeight="800" x="15" y="105">Actual Urooj Reality</text>
+                  <rect fill="url(#sakuraGrad)" height="32" rx="16" width="480" x="215" y="86"></rect>
+                  
+                  {/* High-contrast embedded badge pill inside the bar */}
+                  <rect fill="rgba(12, 10, 24, 0.92)" height="24" rx="12" stroke="#FFFC00" strokeWidth="1.2" width="180" x="502" y="90"></rect>
+                  <text fill="#FFFC00" fontFamily="var(--font-headline)" fontSize="11.5" fontWeight="900" letterSpacing="0.8px" textAnchor="middle" x="592" y="106">
+                    100.0% GOD LEVEL
+                  </text>
 
                   <defs>
-                    <linearGradient id="sakuraGrad" x1="140" y1="80" x2="550" y2="104" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#b7004f" />
-                      <stop offset="0.5" stopColor="#e40a65" />
-                      <stop offset="1" stopColor="#FFFC00" />
+                    <linearGradient id="sakuraGrad" gradientUnits="userSpaceOnUse" x1="215" x2="695" y1="86" y2="86">
+                      <stop offset="0%" stopColor="#C2185B" />
+                      <stop offset="35%" stopColor="#E91E63" />
+                      <stop offset="70%" stopColor="#FF5722" />
+                      <stop offset="90%" stopColor="#FFB300" />
+                      <stop offset="100%" stopColor="#FFFC00" />
                     </linearGradient>
                   </defs>
                 </svg>
