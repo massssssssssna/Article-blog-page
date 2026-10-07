@@ -164,7 +164,7 @@ export default function FatimaChroniclesPage() {
 
       {/* Header */}
       <header className="site-header">
-        <div className="header-inner-container">
+        <div className="header-inner">
           <a href="#top" className="header-brand" onClick={() => soundFX.playPop()}>
             <div className="brand-icon-crown">
               <Crown size={18} style={{ color: 'var(--snap-yellow)' }} />
